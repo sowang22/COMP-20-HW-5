@@ -1,0 +1,77 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Quick Pick </title>
+</head>
+
+<body>
+	<script language="javascript">
+		var quick_pick = [];
+		var n6; 
+
+		for (n=0; n < 5; n++){
+			num = Math.floor(Math.random() * 47 + 1);
+			quick_pick.push(num);
+		}
+
+		quick_pick.sort((x,y)=>x-y);
+		n6 = Math.floor(Math.random() * 17 + 1);
+
+		document.write("The quick pick numbers are: ");
+		for (i=0; i<quick_pick.length; i++){
+			document.write(quick_pick[i] + " ");
+		}
+		document.write("<br />");
+		document.write("The lucky ball number is: " + n6 + "<br />");
+		document.write("<br />");
+
+		prompt("Enter winning numbers separated by a space: ", "28 30 31 42 43");
+		prompt("Enter lucky ball number: ", "13");
+
+		document.write("The winning numbers are: 28 30 31 42 43 <br />");
+		document.write("The lucky ball number is: 13 <br />");
+		document.write("<br />");
+
+		winners = [28, 30, 31, 42, 43];
+		lucky = 13;
+
+		counter = 0; 
+		l_ball = false; 
+
+		for (var i = 0; i < quick_pick.length; i++) {
+			for (var j = 0; j < winners.length; j++) {
+				if (quick_pick[i] == winners[j])
+					counter++;
+			}
+		}
+
+		if (lucky == n6)
+			l_ball = true; 
+
+		if ((counter == 5) && (l_ball == true)){
+			document.write("You win! Your payout is $7000 a week for life.");
+		} else if (counter == 5){
+			document.write("You win! Your payout is $25000 a year for life.");
+		} else if ((counter == 4) && (l_ball == true)) {
+			document.write("You win! Your payout is $5000.");
+		} else if (counter == 4) {
+			document.write("You win! Your payout is $200.");
+		} else if ((counter == 3) && (l_ball == true)){
+			document.write("You win! Your payout is $150.");
+		} else if (counter == 3) {
+			document.write("You win! Your payout is $20.");
+		} else if ((counter == 2) && (l_ball == true)){
+			document.write("You win! Your payout is $25.");
+		} else if (counter == 2) {
+			document.write("You win! Your payout is $3.");
+		} else if ((counter == 1) && (l_ball == true)) {
+			document.write("You win! Your payout is $6.");
+		} else if ((counter == 0) && (l_ball == true)) {
+			document.write("You win! Your payout is $4.");
+		} else {
+			document.write("You lose! Sorry, no payout.");
+		}
+
+	</script>
+</body>
+</html>
